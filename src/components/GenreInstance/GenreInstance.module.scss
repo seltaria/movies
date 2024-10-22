@@ -1,0 +1,14 @@
+.container {
+    width: 100px;
+    height: 100px;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    // box-shadow: 0px 0px 80px 0px #FFFFFF54;
+
+    &:hover {
+        color: white;
+        border-color: #DC5DFC;
+    }
+}

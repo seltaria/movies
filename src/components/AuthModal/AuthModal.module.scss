@@ -1,0 +1,47 @@
+.logo {
+    font-size: 24px;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.container {
+    .subtitle {
+        text-align: center;
+        margin-bottom: 16px;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    :global(.ant-form-item) {
+        margin-bottom: 8px;
+    }
+
+    input {
+        height: 56px;
+        border: 1px solid #00000066;
+        font-size: 18px;
+
+        &::placeholder {
+            color: #00000066;
+        }
+    }
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    .textButton {
+        background: none;
+        padding: 0;
+        border: none;
+        color: black;
+        font-size: 18px;
+        font-weight: 700;
+        margin-top: 24px;
+        line-height: 24px;
+    }
+}

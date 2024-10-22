@@ -1,0 +1,7 @@
+.layout {
+    > div {
+        &:last-child {
+            padding-top: 80px;
+        }
+    }
+}

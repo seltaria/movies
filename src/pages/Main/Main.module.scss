@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .topTitle {
+        margin-top: 40px;
+        font-size: 40px;
+        font-weight: 700;
+    }
+}

@@ -1,0 +1,50 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    .button {
+        width: 262px;
+    }
+}
+
+.infoBlock {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: white;
+
+    .avatar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        color: white;
+        background-color: #FFFFFF80;
+        border-radius: 50%;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 32px;
+    }
+    
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        > div {
+            &:first-child {
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 24px;
+            }
+
+            &:last-child {
+                font-size: 24px;
+                font-weight: 700;
+                line-height: 32px;
+            }
+        }
+    }
+}

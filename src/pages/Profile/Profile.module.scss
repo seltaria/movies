@@ -1,0 +1,27 @@
+.container {
+    .tabs {
+        :global(.ant-tabs-nav) {
+            &::before {
+                border: none;
+            }
+        }
+
+        :global(.ant-tabs-tab) {
+                color: white;
+        }
+
+        :global(.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn) {
+                color: white;
+        }
+
+        :global(.ant-tabs-ink-bar) {
+            background: #DC5DFC;
+        }
+    }
+
+    .title {
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 56px;
+    }
+}

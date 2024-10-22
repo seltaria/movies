@@ -1,0 +1,59 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+    position: fixed;
+    left: 0;
+    right: 0;
+    padding: 20px 40px;
+    z-index: 5;
+
+    > a {
+        font-size: 24px;
+        color: white;
+        border-bottom: 1.5px solid transparent;
+        transition: opacity 0.25s ease-in-out;
+
+        &:global(.active) {
+            border-color: #DC5DFC;
+        }
+
+        &:hover {
+            color: white;
+            opacity: 0.6;
+        }
+    }
+
+    .loginButton {
+        font-size: 24px;
+        color: white;
+        border: none;
+        background: none;
+        padding: 0;
+    }
+}
+
+.closeButton {
+    position: absolute;
+    top: 0;
+    right: -60px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    color: black;
+    background-color: #fff;
+    padding: 0;
+
+    &:hover {
+        color: black;
+    }
+}
+
+.modal {
+    :global(.ant-modal-content) {
+        padding: 64px 40px;
+        width: 420px;
+    }
+}
