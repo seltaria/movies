@@ -18,19 +18,25 @@ import {
 import { Rating } from "../../ui/Rating";
 import { toHoursAndMinutes } from "../../utils/helpers";
 import { useAuth } from "../../app/hooks/useAuth";
+import { clsx } from "clsx";
+import { openAuth } from "../../app/slices/userSlice";
+import { useAppDispatch } from "../../app/hooks/hooks";
 
 interface MainMovieInfoProps {
   data: RandomMovieResponse;
   isFetching: boolean;
   refresh: () => void;
+  short?: boolean;
 }
 
 const MainMovieInfo: FC<Partial<MainMovieInfoProps>> = ({
   data,
   isFetching,
   refresh,
+  short,
 }) => {
   const user = useAuth();
+  const dispatch = useAppDispatch();
 
   console.log("main movie user info", user);
 
@@ -55,6 +61,9 @@ const MainMovieInfo: FC<Partial<MainMovieInfoProps>> = ({
   const closeModal = () => setIsModalOpen(false);
 
   const handleClick = () => {
+    if (!user.user) {
+      dispatch(openAuth());
+    }
     console.log({ isFavorite });
     if (isFavorite) {
       removeFavoriteMovie(`${data?.id}`);
@@ -78,7 +87,9 @@ const MainMovieInfo: FC<Partial<MainMovieInfoProps>> = ({
           </div>
 
           <div className={styles.title}>{data?.title}</div>
-          <div className={styles.subtitle}>{data?.plot}</div>
+          <div className={clsx(styles.subtitle, short && styles.short)}>
+            {data?.plot}
+          </div>
 
           <div className={styles.buttons}>
             <button onClick={openModal}>Трейлер</button>

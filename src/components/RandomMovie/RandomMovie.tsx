@@ -28,6 +28,11 @@ export const RandomMovie: FC = () => {
   }
 
   return (
-    <MainMovieInfo data={data} isFetching={isFetching} refresh={refresh} />
+    <MainMovieInfo
+      data={data}
+      isFetching={isFetching}
+      refresh={refresh}
+      short
+    />
   );
 };

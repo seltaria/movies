@@ -38,10 +38,13 @@
         .subtitle {
             font-size: 24px;
             font-weight: 400;
-            display: -webkit-box;
-            overflow: hidden;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 3;
+
+            & .short {
+                display: -webkit-box;
+                overflow: hidden;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+            }
         }
     }
 }

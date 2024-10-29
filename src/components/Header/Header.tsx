@@ -2,23 +2,25 @@ import { Button } from "antd";
 import Modal from "antd/es/modal/Modal";
 import { Link, NavLink } from "react-router-dom";
 import { AuthModal } from "../AuthModal";
-import { useMemo, useState } from "react";
 import { GlobalSearch } from "../GlobalSearch";
 import styles from "./Header.module.scss";
 import { CloseOutlined } from "@ant-design/icons";
 import { useAuth } from "../../app/hooks/useAuth";
+import { closeAuth, openAuth } from "../../app/slices/userSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
 
 const Header = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const user = useAuth();
 
   console.log("AAAAAAAAAAA", useAuth());
 
   console.log("Header:", user);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const isModalOpen = useAppSelector((store) => store.user.isAuthOpen);
+
+  const dispatch = useAppDispatch();
+  const openModal = () => dispatch(openAuth());
+  const closeModal = () => dispatch(closeAuth());
 
   return (
     <div className={styles.container}>

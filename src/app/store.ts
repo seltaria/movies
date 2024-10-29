@@ -16,6 +16,8 @@ export const store = configureStore({
             .concat(authApi.middleware)
 });
 
-export type RootState = ReturnType<typeof store.getState>;
+export type AppStore = typeof store;
 
-export type AppDispatch = ReturnType<typeof store.dispatch>;
+export type RootState = ReturnType<AppStore['getState']>;
+
+export type AppDispatch = AppStore['dispatch'];

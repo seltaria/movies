@@ -1,20 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    favorites: [],
+    isAuthOpen: false,
 };
 
 const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
-        addFavorite: (state, action) => {
-            state.favorites.push(action.payload)
+        openAuth: (state) => {
+            state.isAuthOpen = true;
+        },
+        closeAuth: (state) => {
+            state.isAuthOpen = false;
         }
     },
 });
 
 export const {
-    addFavorite
+    openAuth,
+    closeAuth
 } = userSlice.actions;
 export {userSlice};
