@@ -4,6 +4,7 @@ import { RandomMovieResponse } from "../types";
 export const moviesApi = createApi({
     reducerPath: "moviesApi",
     baseQuery: fetchBaseQuery({ baseUrl: "https://cinemaguide.skillbox.cc/" }),
+    tagTypes: ["Favorites"],
     endpoints: (builder) => ({
         getRandomMovie: builder.query<RandomMovieResponse, {}>({
             query: () => `/movie/random`
@@ -21,20 +22,23 @@ export const moviesApi = createApi({
                 body: { id: arg },
                 credentials: "include"
             }),
+            invalidatesTags: ["Favorites"],
         }),
         removeFavorite: builder.mutation<{}, string>({
             query: (arg) => ({
                 url: `/favorites/${arg}`,
                 method: "DELETE",
                 credentials: "include"
-            })
+            }),
+            invalidatesTags: ["Favorites"],
         }),
-        getFavorites: builder.query({
+        getFavorites: builder.query<RandomMovieResponse[], {}>({
             query: () => ({
                 url: "/favorites",
                 method: "GET",
                 credentials: "include"
-            })
+            }),
+            providesTags: ["Favorites"],
         }),
         getGenres: builder.query<string[], {}>({
             query: () => "/movie/genres"

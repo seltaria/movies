@@ -3,6 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const authApi = createApi({
     reducerPath: "authApi",
     baseQuery: fetchBaseQuery({ baseUrl: "https://cinemaguide.skillbox.cc/" }),
+    tagTypes: ["Profile"],
     endpoints: (builder) => ({
         login: builder.mutation<{email: string, password: string}, {}>({
             query: (arg) => ({
@@ -10,7 +11,8 @@ export const authApi = createApi({
                 method: "POST",
                 body: arg,
                 credentials: "include"
-            })
+            }),
+            invalidatesTags: ["Profile"]
         }),
         register: builder.mutation<
             {result: boolean},
@@ -22,11 +24,12 @@ export const authApi = createApi({
                 body: arg
             })
         }),
-        logout: builder.query({
+        logout: builder.mutation({
             query: () => ({
                 url: "/auth/logout", 
                 credentials: "include"
             }),
+            invalidatesTags: ["Profile"]
         }),
         getProfileData: builder.query<{
             favorites: number[],
@@ -36,8 +39,9 @@ export const authApi = createApi({
           }, {}>({
             query: () => ({
                 url: "/profile",
-                credentials: "include"
-            })
+                credentials: "include",
+            }),
+            providesTags: ["Profile"]
         })
     })
 });
@@ -45,8 +49,7 @@ export const authApi = createApi({
 export const {
     useGetProfileDataQuery,
     useLazyGetProfileDataQuery,
-    useLazyLogoutQuery,
     useLoginMutation,
-    useLogoutQuery,
     useRegisterMutation,
+    useLogoutMutation,
 } = authApi;

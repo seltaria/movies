@@ -6,8 +6,6 @@ import { FC, useState } from "react";
 import { useLoginMutation, useRegisterMutation } from "../../app/authApi";
 import styles from "./AuthModal.module.scss";
 import { Button } from "../../ui/Button";
-import { MailOutlined } from "@ant-design/icons";
-import { useAuth } from "../../app/hooks/useAuth";
 
 interface AuthModalProps {
   closeModal: () => void;
@@ -34,16 +32,12 @@ const AuthModal: FC<AuthModalProps> = ({ closeModal }) => {
 
   const [form] = useForm();
 
-  const user = useAuth();
-
   const goToLogin = () => setRegistered(true);
   const goToRegister = () => setRegistered(false);
 
   const login = () => {
     const { email, password } = form.getFieldsValue();
     loginUser({ email, password });
-
-    user.refetch();
     closeModal();
   };
 

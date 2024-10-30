@@ -1,9 +1,11 @@
 import { FC } from "react";
 import styles from "./MovieCard.module.scss";
 import { Link } from "react-router-dom";
-import { useRemoveFavoriteMutation } from "../../app/moviesApi";
+import {
+  useGetFavoritesQuery,
+  useRemoveFavoriteMutation,
+} from "../../app/moviesApi";
 import { CloseOutlined } from "@ant-design/icons";
-import { useAuth } from "../../app/hooks/useAuth";
 
 interface MovieCardProps {
   id: number | string;
@@ -22,11 +24,8 @@ const MovieCard: FC<MovieCardProps> = ({
 }) => {
   const [remove] = useRemoveFavoriteMutation();
 
-  const user = useAuth();
-
   const removeFavorite = () => {
     remove(`${id}`);
-    user.refetch();
   };
 
   return (

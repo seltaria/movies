@@ -13,12 +13,12 @@ const userSlice = createSlice({
         },
         closeAuth: (state) => {
             state.isAuthOpen = false;
-        }
+        },
     },
 });
 
 export const {
     openAuth,
-    closeAuth
+    closeAuth,
 } = userSlice.actions;
 export {userSlice};

@@ -1,9 +1,9 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useAuth } from "../app/hooks/useAuth";
+import { useGetProfileDataQuery } from "../app/authApi";
 
 const PrivateRoute = () => {
-  const user = useAuth();
-  if (!user.user) return <Navigate to="/" />;
+  const { data } = useGetProfileDataQuery({});
+  if (!data) return <Navigate to="/" />;
   return <Outlet />;
 };
 

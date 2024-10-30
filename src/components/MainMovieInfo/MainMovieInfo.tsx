@@ -3,11 +3,10 @@ import {
   HeartFilled,
   HeartOutlined,
   RedoOutlined,
-  StarOutlined,
 } from "@ant-design/icons";
-import { Modal, Spin } from "antd";
+import { Modal } from "antd";
 import styles from "./MainMovieInfo.module.scss";
-import { FC, useEffect, useMemo, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { RandomMovieResponse } from "../../types";
 import { Link } from "react-router-dom";
 import {
@@ -17,10 +16,10 @@ import {
 } from "../../app/moviesApi";
 import { Rating } from "../../ui/Rating";
 import { toHoursAndMinutes } from "../../utils/helpers";
-import { useAuth } from "../../app/hooks/useAuth";
 import { clsx } from "clsx";
 import { openAuth } from "../../app/slices/userSlice";
-import { useAppDispatch } from "../../app/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
+import { useGetProfileDataQuery } from "../../app/authApi";
 
 interface MainMovieInfoProps {
   data: RandomMovieResponse;
@@ -35,49 +34,46 @@ const MainMovieInfo: FC<Partial<MainMovieInfoProps>> = ({
   refresh,
   short,
 }) => {
-  const user = useAuth();
+  const { data: favorites } = useGetFavoritesQuery({});
+  const { data: user } = useGetProfileDataQuery({});
+
   const dispatch = useAppDispatch();
 
-  console.log("main movie user info", user);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(
-    user.user?.favorites?.includes(`${data?.id}`)
-  );
-
-  useEffect(() => {
-    console.log("USER CHANGED in main movie info", user.user);
-    setIsFavorite(user.user?.favorites?.includes(`${data?.id}`));
-  }, [user]);
 
   const [
     addFavoriteMovie,
     { isLoading: isAddingLoading, isError: isAddingError },
   ] = useAddFavoriteMutation();
 
-  const [removeFavoriteMovie] = useRemoveFavoriteMutation();
+  const [
+    removeFavoriteMovie,
+    { isLoading: isRemoveLoading, isSuccess: isRemoveSuccess },
+  ] = useRemoveFavoriteMutation();
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  const isFavorite = favorites?.find((el) => el.id === data?.id);
+
   const handleClick = () => {
-    if (!user.user) {
+    if (!user) {
       dispatch(openAuth());
+      return;
     }
-    console.log({ isFavorite });
+
     if (isFavorite) {
       removeFavoriteMovie(`${data?.id}`);
     } else {
       addFavoriteMovie(`${data?.id}`);
     }
-    user.refetch();
   };
 
   return (
     <div>
       {isFetching && <div className={styles.fetching} />}
 
-      <div className={styles.card}>
+      <div className={clsx(styles.card, short && styles.short)}>
         <div className={styles.content}>
           <div className={styles.header}>
             <Rating rating={data?.tmdbRating} />
@@ -87,9 +83,7 @@ const MainMovieInfo: FC<Partial<MainMovieInfoProps>> = ({
           </div>
 
           <div className={styles.title}>{data?.title}</div>
-          <div className={clsx(styles.subtitle, short && styles.short)}>
-            {data?.plot}
-          </div>
+          <div className={styles.subtitle}>{data?.plot}</div>
 
           <div className={styles.buttons}>
             <button onClick={openModal}>Трейлер</button>

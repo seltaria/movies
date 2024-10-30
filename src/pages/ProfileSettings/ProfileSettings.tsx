@@ -2,9 +2,9 @@ import { FC, ReactNode } from "react";
 import styles from "./ProfileSettings.module.scss";
 import { Button } from "../../ui/Button";
 import { MailOutlined } from "@ant-design/icons";
-import { useLazyLogoutQuery } from "../../app/authApi";
-import { useAuth } from "../../app/hooks/useAuth";
+import { useGetProfileDataQuery, useLogoutMutation } from "../../app/authApi";
 import { Skeleton } from "antd";
+import { useNavigate } from "react-router-dom";
 
 interface InfoBlockProps {
   avatar: ReactNode;
@@ -25,29 +25,29 @@ const InfoBlock: FC<InfoBlockProps> = ({ avatar, title, value }) => {
 };
 
 const ProfileSettings = () => {
-  const user = useAuth();
-  const [logout] = useLazyLogoutQuery();
+  const { data, isLoading, isError, isSuccess } = useGetProfileDataQuery({});
+  const [logout] = useLogoutMutation();
+  const navigate = useNavigate();
 
-  if (user.isLoading) {
+  if (isLoading) {
     return <Skeleton />;
   }
 
-  if (user.isError) {
+  if (isError) {
     return <div>Ошибка</div>;
   }
 
-  if (!user.user) {
+  if (!data && isSuccess) {
     return <div>Нет данных</div>;
   }
 
-  const { name, surname, email } = user.user;
+  const { name, surname, email } = data;
 
   const initials = `${name[0]}${surname[0]}`;
 
   const handleClick = () => {
     logout({});
-
-    user.refetch();
+    navigate("/");
   };
 
   return (

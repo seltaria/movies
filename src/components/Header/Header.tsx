@@ -1,24 +1,20 @@
-import { Button } from "antd";
 import Modal from "antd/es/modal/Modal";
 import { Link, NavLink } from "react-router-dom";
 import { AuthModal } from "../AuthModal";
 import { GlobalSearch } from "../GlobalSearch";
 import styles from "./Header.module.scss";
 import { CloseOutlined } from "@ant-design/icons";
-import { useAuth } from "../../app/hooks/useAuth";
 import { closeAuth, openAuth } from "../../app/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
+import { useGetProfileDataQuery } from "../../app/authApi";
 
 const Header = () => {
-  const user = useAuth();
+  const dispatch = useAppDispatch();
 
-  console.log("AAAAAAAAAAA", useAuth());
-
-  console.log("Header:", user);
+  const { data } = useGetProfileDataQuery({});
 
   const isModalOpen = useAppSelector((store) => store.user.isAuthOpen);
 
-  const dispatch = useAppDispatch();
   const openModal = () => dispatch(openAuth());
   const closeModal = () => dispatch(closeAuth());
 
@@ -28,8 +24,8 @@ const Header = () => {
       <NavLink to="/">Главная</NavLink>
       <NavLink to="/genres">Жанры</NavLink>
       <GlobalSearch />
-      {user.user?.name ? (
-        <NavLink to="/profile">{user.user.name}</NavLink>
+      {data?.name ? (
+        <NavLink to="/profile">{data.name}</NavLink>
       ) : (
         <button className={styles.loginButton} onClick={openModal}>
           Войти
