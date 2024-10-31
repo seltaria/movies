@@ -86,6 +86,7 @@ const MainMovieInfo: FC<Partial<MainMovieInfoProps>> = ({
           <div className={styles.subtitle}>{data?.plot}</div>
 
           <div className={styles.buttons}>
+            {/* TODO: выключать трейлер при закрытии модалки */}
             <button onClick={openModal}>Трейлер</button>
             {refresh && data?.id && (
               <Link className={styles.about} to={`${data.id}`}>
@@ -118,6 +119,7 @@ const MainMovieInfo: FC<Partial<MainMovieInfoProps>> = ({
         <button className={styles.closeButton} onClick={closeModal}>
           <CloseOutlined />
         </button>
+        {/* TODO: сделать, чтобы полоска не мешала перематывать */}
         <div className={styles.title}>{data?.title}</div>
       </Modal>
     </div>

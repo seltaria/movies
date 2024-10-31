@@ -29,6 +29,7 @@ const GenrePage = () => {
         <LeftOutlined />
         <span className={styles.title}>{name}</span>
       </Link>
+      {/* TODO: либо добавить картинки, либо сделать нормальный список */}
       <MoviesGrid movies={data} />
     </div>
   );

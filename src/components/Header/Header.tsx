@@ -21,7 +21,6 @@ const Header = () => {
 
   return (
     <div className={styles.container}>
-      <Link to="/">CinemaGuide</Link>
       <NavLink to="/">Главная</NavLink>
       <NavLink to="/genres">Жанры</NavLink>
       <GlobalSearch />
