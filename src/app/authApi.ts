@@ -48,7 +48,6 @@ export const authApi = createApi({
 
 export const {
     useGetProfileDataQuery,
-    useLazyGetProfileDataQuery,
     useLoginMutation,
     useRegisterMutation,
     useLogoutMutation,

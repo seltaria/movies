@@ -30,7 +30,7 @@ const ProfileSettings = () => {
   const navigate = useNavigate();
 
   if (isLoading) {
-    return <Skeleton />;
+    return <Skeleton active />;
   }
 
   if (isError) {

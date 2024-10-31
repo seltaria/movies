@@ -7,11 +7,12 @@ import { CloseOutlined } from "@ant-design/icons";
 import { closeAuth, openAuth } from "../../app/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
 import { useGetProfileDataQuery } from "../../app/authApi";
+import { Skeleton } from "antd";
 
 const Header = () => {
   const dispatch = useAppDispatch();
 
-  const { data } = useGetProfileDataQuery({});
+  const { data, isLoading, isError } = useGetProfileDataQuery({});
 
   const isModalOpen = useAppSelector((store) => store.user.isAuthOpen);
 
@@ -24,9 +25,11 @@ const Header = () => {
       <NavLink to="/">Главная</NavLink>
       <NavLink to="/genres">Жанры</NavLink>
       <GlobalSearch />
-      {data?.name ? (
+      {isLoading && <Skeleton.Avatar active />}
+      {!isLoading && data?.name && !isError && (
         <NavLink to="/profile">{data.name}</NavLink>
-      ) : (
+      )}
+      {!isLoading && (!data?.name || isError) && (
         <button className={styles.loginButton} onClick={openModal}>
           Войти
         </button>
