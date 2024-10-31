@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .rating {
     display: flex;
     align-items: center;
@@ -8,7 +10,7 @@
     font-size: 18px;
     font-weight: 700;
     border-radius: 16px;
-    color: white !important;
+    color: $white !important;
 
     &.small {
         gap: 3px;
@@ -19,15 +21,15 @@
     }
 
     &.gold {
-        background-color: #A59400;
+        background-color: $gold;
     }
     &.green {
-        background-color: #308E21;
+        background-color: $green;
     }
     &.gray {
-        background-color: #777777;
+        background-color: $gray-rating;
     }
     &.red {
-        background-color: #C82020;
+        background-color: $red;
     }
 }

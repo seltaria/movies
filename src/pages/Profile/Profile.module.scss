@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .container {
     .tabs {
         :global(.ant-tabs-nav) {
@@ -7,15 +9,15 @@
         }
 
         :global(.ant-tabs-tab) {
-                color: white;
+                color: $white;
         }
 
         :global(.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn) {
-                color: white;
+                color: $white;
         }
 
         :global(.ant-tabs-ink-bar) {
-            background: #DC5DFC;
+            background: $violet;
         }
     }
 

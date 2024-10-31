@@ -1,10 +1,12 @@
+@import "../../styles/variables.scss";
+
 .container {
     display: flex;
     flex-direction: column;
     gap: 24px;
 
     > a {
-        color: white;
+        color: $white;
         font-size: 32px;
         display: flex;
         align-items: center;
@@ -12,7 +14,7 @@
         transition: opacity 0.25s ease-in-out;
 
         &:hover {
-            color: white;
+            color: $white;
             opacity: 0.6;
         }
     }

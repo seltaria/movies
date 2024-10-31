@@ -1,36 +1,38 @@
+@import "../../styles/variables.scss";
+
 .wrapper {
     width: -webkit-fill-available;
     margin-left: auto;
     max-width: 330px;
 
     > span {
-        border: 1px solid #676767;
-        background-color: #525252;
+        border: 1px solid $gray-light;
+        background-color: $gray;
 
         &:hover,
         &:focus,
         &:focus-within {
-            border-color: #393B3C;
-            background-color: #393B3C;
+            border-color: $gray-dark;
+            background-color: $gray-dark;
             box-shadow: none;
         }
 
         :global(.ant-input) {
-            color: #FFFFFF80;
+            color: $white-dark;
             
             &::placeholder {
-                color: #FFFFFF80;
+                color: $white-dark;
             }
     
             &:focus {
-                border-color: #393B3C;
-                background-color: #393B3C;
+                border-color: $gray-dark;
+                background-color: $gray-dark;
             }
         }
     }
 
     :global(.anticon-close-circle) {
-        color: #7a7a7a;
+        color: $gray-light;
     }
 }
 
@@ -38,10 +40,10 @@
     position: absolute;
     top: 64px;
     right: 16px;
-    background-color: #393B3C;
+    background-color: $gray-dark;
     padding: 8px;
     border-radius: 8px;
-    color: black;
+    color: $black;
     z-index: 10;
     display: flex;
     flex-direction: column;
@@ -58,7 +60,7 @@
         border: 1px solid transparent;
 
         &:hover {
-            border-color: rgba(255,255,255,0.25);
+            border-color: $white-transparent;
         }
     }
 
@@ -75,7 +77,7 @@
         gap: 8px;
 
         div {
-            color: white;
+            color: $white;
         }
 
         .info {

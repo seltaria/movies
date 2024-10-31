@@ -1,23 +1,25 @@
+@import "../../styles/variables.scss";
+
 .button {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: $white;
     font-size: 18px;
     font-weight: 700;
-    background-color: #6A5DC2;
+    background-color: $purple;
     border-radius: 28px;
     transition: background-color 0.25s ease-in-out;
     width: 100%;
 
     &:hover {
-        background-color: #8577E1;
-        border-color: #8577E1;
+        background-color: $purple-light;
+        border-color: $purple-light;
     }
 
     &:focus {
-        background-color: #D6D2F1;
-        border-color: #D6D2F1;
+        background-color: $purple-lightest;
+        border-color: $purple-lightest;
         outline: none;
     }
 }

@@ -1,7 +1,9 @@
+@import "../../styles/variables.scss";
+
 .fetching {
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.3);
+    background-color: $black-transparent-light;
 }
 
 .card {
@@ -83,13 +85,13 @@
         font-size: 1em;
         font-weight: 500;
         font-family: inherit;
-        background-color: #1a1a1a;
+        background-color: $black;
         cursor: pointer;
         transition: border-color 0.25s;
-        color: white;
+        color: $white;
 
         &:hover {
-            border-color: #646cff;
+            border-color: $purple;
         }
     }
 }
@@ -119,7 +121,7 @@
         bottom: 40px;
         width: 80%;
         padding: 20px;
-        color: white;
-        background-color: rgba(0,0,0,0.5);
+        color: $white;
+        background-color: $black-transparent;
     }
 }

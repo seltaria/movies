@@ -1,8 +1,10 @@
+@import "../../styles/variables.scss";
+
 .container {
     display: flex;
     align-items: center;
     gap: 40px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: $black-transparent;
     backdrop-filter: blur(20px);
     position: fixed;
     left: 0;
@@ -13,23 +15,23 @@
 
     > a {
         font-size: 24px;
-        color: white;
+        color: $white;
         border-bottom: 1.5px solid transparent;
         transition: opacity 0.25s ease-in-out;
 
         &:global(.active) {
-            border-color: #DC5DFC;
+            border-color: $violet;
         }
 
         &:hover {
-            color: white;
+            color: $white;
             opacity: 0.6;
         }
     }
 
     .loginButton {
         font-size: 24px;
-        color: white;
+        color: $white;
         border: none;
         background: none;
         padding: 0;
@@ -43,12 +45,12 @@
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    color: black;
-    background-color: #fff;
+    color: $black;
+    background-color: $white;
     padding: 0;
 
     &:hover {
-        color: black;
+        color: $black;
     }
 }
 

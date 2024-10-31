@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .logo {
     font-size: 24px;
     text-align: center;
@@ -21,11 +23,11 @@
     :global(.ant-input-affix-wrapper) {
         padding: 10px;
         height: auto;
-        border: 1px solid #00000066;
+        border: 1px solid $black-transparent;
         font-size: 18px;
 
         &::placeholder {
-            color: #00000066;
+            color: $black-transparent;
         }
     }
 }
@@ -41,7 +43,7 @@
         background: none;
         padding: 0;
         border: none;
-        color: #5d5d5d;
+        color: $gray;
         font-size: 16px;
         font-weight: 400;        
         line-height: 24px;

@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -12,7 +14,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    color: white;
+    color: $white;
 
     .avatar {
         display: flex;
@@ -20,8 +22,8 @@
         justify-content: center;
         width: 60px;
         height: 60px;
-        color: white;
-        background-color: #FFFFFF80;
+        color: $white;
+        background-color: $white-dark;
         border-radius: 50%;
         font-size: 24px;
         font-weight: 700;
