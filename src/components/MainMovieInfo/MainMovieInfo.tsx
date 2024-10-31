@@ -35,7 +35,7 @@ const MainMovieInfo: FC<Partial<MainMovieInfoProps>> = ({
   short,
 }) => {
   const { data: favorites } = useGetFavoritesQuery({});
-  const { data: user } = useGetProfileDataQuery({});
+  const { data: user, isError: isUserError } = useGetProfileDataQuery({});
 
   const dispatch = useAppDispatch();
 
@@ -57,7 +57,7 @@ const MainMovieInfo: FC<Partial<MainMovieInfoProps>> = ({
   const isFavorite = favorites?.find((el) => el.id === data?.id);
 
   const handleClick = () => {
-    if (!user) {
+    if (!user || isUserError) {
       dispatch(openAuth());
       return;
     }

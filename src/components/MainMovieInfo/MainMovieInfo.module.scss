@@ -25,16 +25,18 @@
         }
 
         .poster {
+            top: -80px;
+            right: -40px;
             height: calc(100% + 80px);
         }
     }
     
     .poster {
         position: absolute;
-        top: -80px;
-        right: -40px;
+        top: 0;
+        right: 0;
         height: 600px;
-        opacity: 0.4;
+        opacity: 0.6;
         z-index: -1;
     }
 

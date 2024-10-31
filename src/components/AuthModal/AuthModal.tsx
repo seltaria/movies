@@ -39,6 +39,8 @@ const AuthModal: FC<AuthModalProps> = ({ closeModal }) => {
     const { email, password } = form.getFieldsValue();
     loginUser({ email, password });
     closeModal();
+
+    form.resetFields();
   };
 
   const register = () => {
@@ -47,15 +49,18 @@ const AuthModal: FC<AuthModalProps> = ({ closeModal }) => {
   };
 
   return (
-    <Form form={form}>
-      <div className={styles.logo}>CinemaGuide</div>
+    <Form form={form} scrollToFirstError>
       {registered && (
         <div className={styles.container}>
-          <FormItem name="email">
+          <div className={styles.subtitle}>Вход</div>
+          <FormItem
+            name="email"
+            rules={[{ type: "email", message: "Введите корректный email" }]}
+          >
             <Input placeholder="Электронная почта" />
           </FormItem>
           <FormItem name="password">
-            <Input placeholder="Пароль" />
+            <Input.Password placeholder="Пароль" />
           </FormItem>
           <div className={styles.buttons}>
             <Button onClick={login}>Войти</Button>
@@ -68,21 +73,75 @@ const AuthModal: FC<AuthModalProps> = ({ closeModal }) => {
       {!registered && (
         <div className={styles.container}>
           <div className={styles.subtitle}>Регистрация</div>
-          <FormItem name="email">
+          <FormItem
+            name="email"
+            rules={[
+              {
+                type: "email",
+                message: "Введите корректный email",
+              },
+              {
+                required: true,
+                message: "Введите email",
+              },
+            ]}
+          >
             <Input placeholder="Электронная почта" />
           </FormItem>
-          <FormItem name="name">
+          <FormItem
+            name="name"
+            rules={[
+              {
+                required: true,
+                message: "Введите имя",
+              },
+            ]}
+          >
             <Input placeholder="Имя" />
           </FormItem>
-          <FormItem name="surname">
+          <FormItem
+            name="surname"
+            rules={[
+              {
+                required: true,
+                message: "Введите фамилию",
+              },
+            ]}
+          >
             <Input placeholder="Фамилия" />
           </FormItem>
-          <FormItem name="password">
-            <Input placeholder="Пароль" />
+          <FormItem
+            name="password"
+            rules={[
+              {
+                required: true,
+                message: "Введите пароль",
+              },
+            ]}
+          >
+            <Input.Password placeholder="Пароль" />
           </FormItem>
-          {/* TODO: проверка совпадения паролей */}
-          <FormItem name="pass">
-            <Input placeholder="Подтвердите пароль" />
+          <FormItem
+            name="confirm"
+            dependencies={["password"]}
+            rules={[
+              {
+                required: true,
+                message: "Подтвердите пароль",
+              },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue("password") === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(
+                    new Error("Введенные пароли не совпадают")
+                  );
+                },
+              }),
+            ]}
+          >
+            <Input.Password placeholder="Подтвердите пароль" />
           </FormItem>
           <div className={styles.buttons}>
             <Button onClick={register}>Создать аккаунт</Button>
