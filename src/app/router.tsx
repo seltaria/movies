@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import { Main } from "../pages/Main";
 import { Layout } from "../pages/Layout/Layout";
 import { Genres } from "../pages/Genres";
@@ -7,7 +7,7 @@ import { GenrePage } from "../pages/GenrePage";
 import { Profile } from "../pages/Profile";
 import PrivateRoute from "../components/PrivateRoute";
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     element: <Layout />,
     children: [

@@ -2,7 +2,7 @@
   "name": "skillbox-cinema-react",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://seltaria.github.io/movies-page",
+  "homepage": "https://seltaria.github.io/movies",
   "type": "module",
   "scripts": {
     "dev": "vite",
