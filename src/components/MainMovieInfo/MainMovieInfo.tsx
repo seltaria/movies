@@ -87,7 +87,7 @@ const MainMovieInfo: FC<Partial<MainMovieInfoProps>> = ({
 
           <div className={styles.buttons}>
             {/* TODO: выключать трейлер при закрытии модалки */}
-            <button onClick={openModal}>Трейлер</button>
+            {data?.trailerUrl && <button onClick={openModal}>Трейлер</button>}
             {refresh && data?.id && (
               <Link className={styles.about} to={`${data.id}`}>
                 О фильме
@@ -114,7 +114,7 @@ const MainMovieInfo: FC<Partial<MainMovieInfoProps>> = ({
       >
         <iframe
           className={styles.trailer}
-          src={data?.trailerUrl.replace("watch?v=", "embed/")}
+          src={data?.trailerUrl?.replace("watch?v=", "embed/")}
         />
         <button className={styles.closeButton} onClick={closeModal}>
           <CloseOutlined />
