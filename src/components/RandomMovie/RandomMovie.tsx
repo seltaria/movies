@@ -20,11 +20,11 @@ export const RandomMovie: FC = () => {
   }
 
   if (isError) {
-    return <div>Ошибка</div>;
+    return <div>Error</div>;
   }
 
   if (!data && isSuccess) {
-    return <div>Нет данных</div>;
+    return <div>No data</div>;
   }
 
   return (

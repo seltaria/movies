@@ -21,8 +21,8 @@ const Header = () => {
 
   return (
     <div className={styles.container}>
-      <NavLink to="/">Главная</NavLink>
-      <NavLink to="/genres">Жанры</NavLink>
+      <NavLink to="/">Main</NavLink>
+      <NavLink to="/genres">Genres</NavLink>
       <GlobalSearch />
       {isLoading && <Skeleton.Avatar active />}
       {!isLoading && data?.name && !isError && (
@@ -30,7 +30,7 @@ const Header = () => {
       )}
       {!isLoading && (!data?.name || isError) && (
         <button className={styles.loginButton} onClick={openModal}>
-          Войти
+          Log In
         </button>
       )}
       <Modal

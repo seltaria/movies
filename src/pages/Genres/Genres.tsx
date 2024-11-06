@@ -7,16 +7,18 @@ const Genres = () => {
   const { data, isError, isLoading, isSuccess } = useGetGenresQuery({});
 
   if (isError) {
-    return <div>Ошибка</div>;
+    return <div>Error</div>;
   }
 
   if (isLoading) {
     return <Skeleton active />;
   }
 
+  const sortedData = data.toSorted();
+
   return (
     <div className={styles.container}>
-      {data.map((item, index) => (
+      {sortedData.map((item, index) => (
         <GenreInstance key={index} imageUrl="" title={item} />
       ))}
     </div>

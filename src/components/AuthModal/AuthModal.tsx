@@ -52,74 +52,76 @@ const AuthModal: FC<AuthModalProps> = ({ closeModal }) => {
     <Form form={form} scrollToFirstError>
       {registered && (
         <div className={styles.container}>
-          <div className={styles.subtitle}>Вход</div>
+          <div className={styles.subtitle}>Log In</div>
           <FormItem
             name="email"
-            rules={[{ type: "email", message: "Введите корректный email" }]}
+            rules={[
+              { type: "email", message: "Enter the correct email address" },
+            ]}
           >
-            <Input placeholder="Электронная почта" />
+            <Input placeholder="Email" />
           </FormItem>
           <FormItem name="password">
-            <Input.Password placeholder="Пароль" />
+            <Input.Password placeholder="Password" />
           </FormItem>
           <div className={styles.buttons}>
-            <Button onClick={login}>Войти</Button>
+            <Button onClick={login}>Log In</Button>
             <button className={styles.textButton} onClick={goToRegister}>
-              Регистрация
+              Register
             </button>
           </div>
         </div>
       )}
       {!registered && (
         <div className={styles.container}>
-          <div className={styles.subtitle}>Регистрация</div>
+          <div className={styles.subtitle}>Register</div>
           <FormItem
             name="email"
             rules={[
               {
                 type: "email",
-                message: "Введите корректный email",
+                message: "Enter the correct email address",
               },
               {
                 required: true,
-                message: "Введите email",
+                message: "Enter your email address",
               },
             ]}
           >
-            <Input placeholder="Электронная почта" />
+            <Input placeholder="Email" />
           </FormItem>
           <FormItem
             name="name"
             rules={[
               {
                 required: true,
-                message: "Введите имя",
+                message: "Enter your name",
               },
             ]}
           >
-            <Input placeholder="Имя" />
+            <Input placeholder="Name" />
           </FormItem>
           <FormItem
             name="surname"
             rules={[
               {
                 required: true,
-                message: "Введите фамилию",
+                message: "Enter your surname",
               },
             ]}
           >
-            <Input placeholder="Фамилия" />
+            <Input placeholder="Surname" />
           </FormItem>
           <FormItem
             name="password"
             rules={[
               {
                 required: true,
-                message: "Введите пароль",
+                message: "Enter your password",
               },
             ]}
           >
-            <Input.Password placeholder="Пароль" />
+            <Input.Password placeholder="Password" />
           </FormItem>
           <FormItem
             name="confirm"
@@ -127,7 +129,7 @@ const AuthModal: FC<AuthModalProps> = ({ closeModal }) => {
             rules={[
               {
                 required: true,
-                message: "Подтвердите пароль",
+                message: "Confirm your password",
               },
               ({ getFieldValue }) => ({
                 validator(_, value) {
@@ -135,18 +137,18 @@ const AuthModal: FC<AuthModalProps> = ({ closeModal }) => {
                     return Promise.resolve();
                   }
                   return Promise.reject(
-                    new Error("Введенные пароли не совпадают")
+                    new Error("The entered passwords do not match")
                   );
                 },
               }),
             ]}
           >
-            <Input.Password placeholder="Подтвердите пароль" />
+            <Input.Password placeholder="Confirm your password" />
           </FormItem>
           <div className={styles.buttons}>
-            <Button onClick={register}>Создать аккаунт</Button>
+            <Button onClick={register}>Create new account</Button>
             <button className={styles.textButton} onClick={goToLogin}>
-              У меня есть аккаунт
+              I have an account
             </button>
           </div>
         </div>

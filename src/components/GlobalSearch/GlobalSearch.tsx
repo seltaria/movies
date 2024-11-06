@@ -48,7 +48,7 @@ const GlobalSearch = () => {
       <Input
         value={searchText}
         onChange={handleChange}
-        placeholder="Поиск"
+        placeholder="Search"
         onPressEnter={search}
         allowClear
         onClear={clearSearch}
@@ -58,7 +58,7 @@ const GlobalSearch = () => {
         (data || isFetching || isError) &&
         createPortal(
           <div className={styles.dropdown}>
-            {isError && <div>Ошибка</div>}
+            {isError && <div>Error</div>}
             {isFetching && <Skeleton active />}
             {isSuccess &&
               !isFetching &&
@@ -82,7 +82,9 @@ const GlobalSearch = () => {
             {isSuccess &&
               !isFetching &&
               Array.isArray(data) &&
-              !data.length && <div>По вашему запросу ничего не найдено</div>}
+              !data.length && (
+                <div>Nothing was found for your search query</div>
+              )}
           </div>,
           document.body
         )}

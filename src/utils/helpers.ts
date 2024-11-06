@@ -4,3 +4,5 @@ export const toHoursAndMinutes = (totalMinutes: number | string) => {
 
     return `${hours} ч ${minutes} мин`
 }
+
+export const toCapitalized = (word?: string) => word ? word.charAt(0).toUpperCase() + word.slice(1) : word

@@ -17,7 +17,7 @@ const FavoriteMovies = () => {
   }
 
   if (isError) {
-    return <div>Ошибка</div>;
+    return <div>Error</div>;
   }
 
   return <MoviesGrid movies={data} favorite />;

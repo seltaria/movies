@@ -15,7 +15,7 @@ import {
   useRemoveFavoriteMutation,
 } from "../../app/moviesApi";
 import { Rating } from "../../ui/Rating";
-import { toHoursAndMinutes } from "../../utils/helpers";
+import { toCapitalized, toHoursAndMinutes } from "../../utils/helpers";
 import { clsx } from "clsx";
 import { openAuth } from "../../app/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
@@ -78,7 +78,7 @@ const MainMovieInfo: FC<Partial<MainMovieInfoProps>> = ({
           <div className={styles.header}>
             <Rating rating={data?.tmdbRating} />
             <div>{data?.releaseYear}</div>
-            <div>{data?.genres?.join(", ")}</div>
+            <div>{toCapitalized(data?.genres?.join(", "))}</div>
             {data?.runtime && <div>{toHoursAndMinutes(data.runtime)}</div>}
           </div>
 
@@ -87,10 +87,10 @@ const MainMovieInfo: FC<Partial<MainMovieInfoProps>> = ({
 
           <div className={styles.buttons}>
             {/* TODO: выключать трейлер при закрытии модалки */}
-            {data?.trailerUrl && <button onClick={openModal}>Трейлер</button>}
+            {data?.trailerUrl && <button onClick={openModal}>Trailer</button>}
             {refresh && data?.id && (
               <Link className={styles.about} to={`${data.id}`}>
-                О фильме
+                About
               </Link>
             )}
             <button onClick={handleClick} disabled={isAddingLoading}>

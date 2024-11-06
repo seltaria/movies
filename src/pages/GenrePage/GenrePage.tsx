@@ -16,11 +16,11 @@ const GenrePage = () => {
   }
 
   if (isError) {
-    return <div>Ошибка</div>;
+    return <div>Error</div>;
   }
 
   if (isSuccess && !data) {
-    return <div>Нет данных</div>;
+    return <div>No data</div>;
   }
 
   return (

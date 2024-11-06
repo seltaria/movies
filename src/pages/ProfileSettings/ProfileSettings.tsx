@@ -34,11 +34,11 @@ const ProfileSettings = () => {
   }
 
   if (isError) {
-    return <div>Ошибка</div>;
+    return <div>Error</div>;
   }
 
   if (!data && isSuccess) {
-    return <div>Нет данных</div>;
+    return <div>No data</div>;
   }
 
   const { name, surname, email } = data;
@@ -52,18 +52,10 @@ const ProfileSettings = () => {
 
   return (
     <div className={styles.wrapper}>
-      <InfoBlock
-        avatar={initials}
-        title="Имя Фамилия"
-        value={`${name} ${surname}`}
-      />
-      <InfoBlock
-        avatar={<MailOutlined />}
-        title="Электронная почта"
-        value={email}
-      />
+      <InfoBlock avatar={initials} title="Name" value={`${name} ${surname}`} />
+      <InfoBlock avatar={<MailOutlined />} title="Email" value={email} />
       <Button className={styles.button} onClick={handleClick}>
-        Выйти из аккаунта
+        Log Out
       </Button>
     </div>
   );

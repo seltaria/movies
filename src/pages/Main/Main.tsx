@@ -13,7 +13,7 @@ export const Main = () => {
       {isLoading && <Skeleton active />}
       {isSuccess && (
         <>
-          <div className={styles.topTitle}>Топ 10 фильмов</div>
+          <div className={styles.topTitle}>Top 10</div>
           <MoviesGrid movies={data} showNumbers />
         </>
       )}

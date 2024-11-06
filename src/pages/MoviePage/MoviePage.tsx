@@ -14,24 +14,24 @@ const MoviePage = () => {
   }
 
   if (isError) {
-    return <div>Ошибка</div>;
+    return <div>Error</div>;
   }
 
   if (!data && isSuccess) {
-    return <div>Нет данных</div>;
+    return <div>No data</div>;
   }
 
   return (
     <div className={styles.container}>
       <MainMovieInfo data={data} />
       <div>
-        <div>О фильме</div>
-        {data.language && <div>Язык оригинала - {data.language}</div>}
-        {data.budget && <div>Бюджет - {data.budget}</div>}
-        {data.revenue && <div>Выручка - {data.revenue}</div>}
-        {data.director && <div>Режиссер - {data.director}</div>}
-        {data.production && <div>Продакшен - {data.production}</div>}
-        {data.awardsSummary && <div>Награды - {data.awardsSummary}</div>}
+        <div>About</div>
+        {data.language && <div>Original language - {data.language}</div>}
+        {data.budget && <div>Budget - {data.budget}</div>}
+        {data.revenue && <div>Revenue - {data.revenue}</div>}
+        {data.director && <div>Director - {data.director}</div>}
+        {data.production && <div>Production - {data.production}</div>}
+        {data.awardsSummary && <div>Awards - {data.awardsSummary}</div>}
       </div>
     </div>
   );
